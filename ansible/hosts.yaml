@@ -1,0 +1,17 @@
+all:
+  ubuntu-srv:
+    # core:
+    #   ansible_ssh_host: core.lan
+    #   ansible_ssh_user: ansible
+    ub1:
+      ansible_host: 192.168.222    
+      ansible_ssh_host: ub1.lan
+      ansible_ssh_user: vagrant
+  cent-srv:
+    globihost:
+      ansible_ssh_host: globihost.com
+      ansible_ssh_user: ansible
+    cent1:
+      anisble_host: 192.168.1.227
+      ansible_ssh_host: cent1.lan
+      ansible_ssh_user: vagrant
