@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder './keys', '/home/vagrant/keys'
   config.vm.provider "hyperv"
   config.vm.boot_timeout = 600
-
+  config.vm.network 'public_network', bridge: "Realtek PCIe GBE Family Controller"
   config.vm.provider "hyperv" do |h|
     h.enable_virtualization_extensions = false
     h.linked_clone = false
@@ -25,7 +25,6 @@ Vagrant.configure("2") do |config|
   config.vm.define 'ub1' do |ub1|
     ub1.vm.box = 'bento/ubuntu-18.04'
     ub1.vm.hostname = 'ub1'
-    ub1.vm.network 'public_network', bridge: "Realtek PCIe GBE Family Controller"
     #ub1 folder for scripts
     ub1.vm.synced_folder './ub1', '/home/vagrant/ub1'  
     #Provision ub1 box with cockpit and fail2ban
@@ -35,7 +34,6 @@ Vagrant.configure("2") do |config|
   config.vm.define 'cent1' do |cent1|
     cent1.vm.box = 'bento/centos-8'
     cent1.vm.hostname = 'cent1'
-    cent1.vm.network 'public_network', bridge: "Realtek PCIe GBE Family Controller"
     #Any cent1 files
     cent1.vm.synced_folder './cent1', '/home/vagrant/cent1'
     #Provision cent1 box with cockpit and fail2ban. Also start cockpit and enable fail2ban.
